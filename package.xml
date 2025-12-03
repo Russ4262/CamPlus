@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
+  <name>CamPlus workbench</name>
+  <description>An addon workbench to extend FreeCAD's internal CAM workbench features, and allow for experimentation.</description>
+  <version>1.0</version>
+  <date>2025-11-30</date>
+  <maintainer email="russ4262@gmail.com">russ4262</maintainer>
+  <license file="LICENSE">LGPL-2.1-or-later</license>
+  <url type="repository" branch="main">https://github.com/russ4262/CamPlus</url>
+  <url type="bugtracker">https://github.com/russ4262/CamPlus/issues</url>
+  <icon>freecad/camplus/icons/CamPlus_icon.svg</icon>
+
+  <content>
+    <workbench>
+      <classname>CamPlusWorkbench</classname>
+      <subdirectory>./</subdirectory>
+      <freecadmin>1.0</freecadmin>
+      <tag>CAM</tag>
+      <tag>CamPlus</tag>
+      <tag>4 axis</tag>
+      <tag>3+2 axis</tag>
+      <tag>experimental</tag>
+    </workbench>
+    <depend></depend>
+  </content>
+
+</package>
