@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # ***************************************************************************
-# *   Copyright (c) 2025 Russell Johnson <russ4262> russ4262@gmail.com      *
+# *   Copyright (c) 2023 Russell Johnson <russ4262> russ4262@gmail.com      *
 # *                                                                         *
 # *   This program is free software; you can redistribute it and/or modify  *
 # *   it under the terms of the GNU Lesser General Public License (LGPL)    *
@@ -20,35 +20,7 @@
 # *                                                                         *
 # ***************************************************************************
 
-import FreeCAD as App
-import os
-
-__title__ = "CamPlus workbench __init__ module"
+__title__ = "Boundary __init__ Module"
 __author__ = "Russell Johnson <russ4262>"
 __url__ = "https://github.com/Russ4262/CamPlus"
-__doc__ = "__init__.py module for CamPlus workbench."
-__version__ = "1.4"
-
-directory = os.path.dirname(__file__)
-# print(directory)
-ICONSPATH = os.path.join(directory, "icons")
-TASKPANELSPATH = os.path.join(directory, "taskpanels")
-GUIPANELSPATH = os.path.join(directory, "guipanels")
-IMAGESPATH = os.path.join(directory, "images")
-
-
-# Project references:
-# https://wiki.freecad.org/Create_a_FeaturePython_object_part_I/ru
-# https://wiki.freecad.org/Create_a_FeaturePython_object_part_II/ru
-
-# Load the Parameter Group for this module
-ParGrp = App.ParamGet("System parameter:Modules").GetGroup("CamPlus")
-
-# Set the Parameter Group details
-# ParGrp.SetString("HelpIndex", "CamPlus/Help/index.html")
-ParGrp.SetString("WorkBenchName", "CamPlus")
-# ParGrp.SetString("WorkBenchModule", "CamPlusWorkbench.py")
-
-# App.__unit_test__ += ["TestCamPlusApp"]
-
-App.Console.PrintMessage("Initializing CamPlus workbench...\n")
+__doc__ = "__init__.py module for Boundary dressup of CamPlus workbench."

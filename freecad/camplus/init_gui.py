@@ -41,6 +41,7 @@ class CamPlusWorkbench(Gui.Workbench):
     )
     CommandList = [
         "_AmendCode",
+        "_DressupBoundary",
     ]
 
     def Initialize(self):
@@ -62,6 +63,7 @@ class CamPlusWorkbench(Gui.Workbench):
         Gui.addLanguagePath(":/translations")
         # Gui.addIconPath(":/icons")
         Gui.addCommand("_AmendCode", gui_commands._AmendCode())
+        Gui.addCommand("_DressupBoundary", gui_commands._DressupBoundary())
         """
         Gui.addCommand("_LinkedOperation", gui_commands._LinkedOperation())
         Gui.addCommand(
@@ -71,7 +73,6 @@ class CamPlusWorkbench(Gui.Workbench):
         Gui.addCommand(
             "_DressupOffsetInsideOut", gui_commands._DressupOffsetInsideOut()
         )
-        Gui.addCommand("_DressupBoundary", gui_commands._DressupBoundary())
         Gui.addCommand("_WorkingShape", gui_commands._WorkingShape())
         Gui.addCommand("_InlayOperation", gui_commands._InlayOperation())
         Gui.addCommand("_ClearingOp", gui_commands._ClearingOp())
