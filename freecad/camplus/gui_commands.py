@@ -87,10 +87,7 @@ class _AmendCode:
         selection = FreeCADGui.Selection.getSelection()
         if len(selection) != 1:
             FreeCAD.Console.PrintError(
-                translate(
-                    "CamPlus", "Please select one path object"
-                )
-                + "\n"
+                translate("CamPlus", "Please select one path object") + "\n"
             )
             return
 
@@ -120,7 +117,7 @@ class _LinkedOperation:
         return True
 
     def Activated(self):
-        import freecad.CamPlus.linkedoperation.LinkedOperationGui as LOG
+        import freecad.camplus.linkedoperation.LinkedOperationGui as LOG
 
         selection = FreeCADGui.Selection.getSelection()
 
@@ -167,7 +164,7 @@ class _DressupCompoundProfile:
         return True
 
     def Activated(self):
-        import freecad.CamPlus.compoundprofile.CompoundProfileGui as MPG
+        import freecad.camplus.compoundprofile.CompoundProfileGui as MPG
 
         selection = FreeCADGui.Selection.getSelection()
         if len(selection) != 1:
@@ -214,7 +211,7 @@ class _DressupMultitags:
         return True
 
     def Activated(self):
-        import freecad.CamPlus.multitags.TagsGui as TG
+        import freecad.camplus.multitags.TagsGui as TG
 
         selection = FreeCADGui.Selection.getSelection()
         if len(selection) != 1:
@@ -250,7 +247,7 @@ class _DressupOffsetInsideOut:
         return True
 
     def Activated(self):
-        import freecad.CamPlus.offsetinsideout.OffsetInsideOutGui as OIO
+        import freecad.camplus.offsetinsideout.OffsetInsideOutGui as OIO
 
         selection = FreeCADGui.Selection.getSelection()
         if len(selection) != 1:
@@ -298,7 +295,7 @@ class _InlayOperation:
         return True
 
     def Activated(self):
-        import freecad.CamPlus.inlay.InlayGui as IG
+        import freecad.camplus.inlay.InlayGui as IG
 
         selection = FreeCADGui.Selection.getSelection()
 
@@ -344,29 +341,8 @@ class _WorkingShape:
         return True
 
     def Activated(self):
-        import freecad.CamPlus.workingshape.WorkingShapeGui as WorkingShapeGui
+        import freecad.camplus.workingshape.WorkingShapeGui as WorkingShapeGui
 
-        """
-        import freecad.CamPlus.modelfeatures.ModelFeaturesGui as ModelFeaturesGui
-        import freecad.CamPlus.rotationfeatures.RotationFeaturesGui as RotationFeaturesGui
-        import freecad.CamPlus.utilities.SupportSketch as SupportSketch
-
-        baseGeometry = WorkingShapeGui.getSelectedFeatures()
-
-        ws = WorkingShapeGui.Create(useGui=False)
-        ws.Rotation = RotationFeaturesGui.Create(ws, useGui=False)
-        ws.ModelFeatures = ModelFeaturesGui.Create(
-            ws,
-            ws.Rotation,
-            baseGeometry,
-            useGui=False,
-        )
-        ws.ModelFeatures.ViewObject.Visibility = False
-        ws.ModelFeatures.RotationObj.ViewObject.Visibility = False
-        ws.ExtendFeatures = SupportSketch.addSketch(ws, name="Extend")
-        ws.TrimFeatures = SupportSketch.addSketch(ws, name="Trim")
-        """
-        # ws = WorkingShapeGui.Create(useGui=False)
         ws = WorkingShapeGui.Create(useGui=True)
         FreeCAD.ActiveDocument.recompute()
 
@@ -392,7 +368,7 @@ class _ClearingOp:
         return True
 
     def Activated(self):
-        import freecad.CamPlus.clearing.ClearingOpGui as COG
+        import freecad.camplus.clearing.ClearingOpGui as COG
 
         selection = FreeCADGui.Selection.getSelection()
 
@@ -437,7 +413,7 @@ class _RestShape:
         return False
 
     def Activated(self):
-        import freecad.CamPlus.restshape.RestShapeGui as RMG
+        import freecad.camplus.restshape.RestShapeGui as RMG
 
         selection = FreeCADGui.Selection.getSelection()
 
@@ -479,12 +455,12 @@ class _DressupBoundary:
 
     def GetResources(self):
         return {
-            "Pixmap": CamPlus.ICONSPATH + "\\CAM_Area_Workplane.svg",
+            "Pixmap": CamPlus.ICONSPATH + "\\CamPlus_Boundary.svg",
             "MenuText": QT_TRANSLATE_NOOP("CamPlus", "Dressup Boundary"),
             # "Accel": "P, S",
             "ToolTip": QT_TRANSLATE_NOOP(
                 "CamPlus",
-                "Creates a Boundary dressup on a referenced Profile operation.",
+                "Creates a Boundary dressup on a referenced CAM operation.",
             ),
             "CmdType": "ForEdit",
         }
@@ -495,14 +471,14 @@ class _DressupBoundary:
         return True
 
     def Activated(self):
-        import freecad.CamPlus.boundary.BoundaryGui as BG
+        import freecad.camplus.boundary.BoundaryGui as BG
 
         selection = FreeCADGui.Selection.getSelection()
         if len(selection) != 1:
             FreeCAD.Console.PrintError(
                 translate(
-                    "Path_DressupBoundary",
-                    "Please select one path Profile object",
+                    "CamPlus",
+                    "Please select one CAM object",
                 )
                 + "\n"
             )
@@ -510,8 +486,8 @@ class _DressupBoundary:
         if len(selection) == 1 and not hasattr(selection[0], "Active"):
             FreeCAD.Console.PrintError(
                 translate(
-                    "Path_DressupBoundary",
-                    "Please select a path object with 'Active' property.",
+                    "CamPlus",
+                    "Select a CAM object that has the 'Active' property.",
                 )
                 + "\n"
             )
