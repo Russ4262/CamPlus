@@ -37,7 +37,7 @@ class CamPlusWorkbench(Gui.Workbench):
     # Icon = App.getHomePath() + "Mod\\CamPlus\\icons\\CamPlus_icon.svg"
     Icon = (
         App.getUserAppDataDir()
-        + "Mod\\CamPlus\\freecad\\camplus\\icons\\CamPlus_icon.svg"
+        + "Mod\\CamPlus\\freecad\\camplus\\icons\\camplus_workbench_icon.svg"
     )
     CommandList = [
         "_AmendCode",

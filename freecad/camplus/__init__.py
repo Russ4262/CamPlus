@@ -27,10 +27,9 @@ __title__ = "CamPlus workbench __init__ module"
 __author__ = "Russell Johnson <russ4262>"
 __url__ = "https://github.com/Russ4262/CamPlus"
 __doc__ = "__init__.py module for CamPlus workbench."
-__version__ = "1.4"
+__version__ = "1.5"
 
 directory = os.path.dirname(__file__)
-# print(directory)
 ICONSPATH = os.path.join(directory, "icons")
 TASKPANELSPATH = os.path.join(directory, "taskpanels")
 GUIPANELSPATH = os.path.join(directory, "guipanels")
