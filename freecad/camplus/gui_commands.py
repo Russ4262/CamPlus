@@ -23,8 +23,9 @@
 
 import FreeCAD
 import FreeCADGui
-from PySide import QtGui
-from PySide import QtCore
+
+# from PySide import QtGui
+# from PySide import QtCore
 from PySide.QtCore import QT_TRANSLATE_NOOP
 import importlib
 import freecad.camplus as CamPlus
@@ -39,8 +40,15 @@ __doc__ = "Module containing GUI command classes for CAM Plus workbench."
 translate = FreeCAD.Qt.translate
 
 
-class _LoadCamPlusWorkbench:
-    "command definition to load the CamPlus workbench"
+def _selectionToBaseList(selection):
+    base = []
+    for s in selection:
+        base.append((s.Object, [n for n in s.SubElementNames]))
+    return base
+
+
+class _LoadCAMWorkbench:
+    "command definition to load the CAM workbench"
 
     def GetResources(self):
         return {
@@ -55,7 +63,7 @@ class _LoadCamPlusWorkbench:
         return True
 
     def Activated(self):
-        FreeCADGui.activateWorkbench("CamPlusWorkbench")
+        FreeCADGui.activateWorkbench("CAMWorkbench")
 
 
 class _AmendCode:
@@ -324,7 +332,6 @@ class _WorkingShape:
 
     def GetResources(self):
         return {
-            # "Pixmap": "Path_Simulator",  # Path_SelectLoop
             "Pixmap": CamPlus.ICONSPATH + "\\TechDraw_TreeMulti.svg",
             "MenuText": QT_TRANSLATE_NOOP("CamPlus", "Working Shape"),
             "Accel": "P, S",
@@ -344,6 +351,12 @@ class _WorkingShape:
         import freecad.camplus.workingshape.WorkingShapeGui as WorkingShapeGui
 
         ws = WorkingShapeGui.Create(useGui=True)
+        """
+        import freecad.camplus.workingshape.WorkingShape as WorkingShape
+
+        selection = FreeCADGui.Selection.getSelectionEx()
+        ws = WorkingShape.Create(None, _selectionToBaseList(selection), True)
+        """
         FreeCAD.ActiveDocument.recompute()
 
 
@@ -471,8 +484,6 @@ class _DressupBoundary:
         return True
 
     def Activated(self):
-        import freecad.camplus.boundary.BoundaryGui as BG
-
         selection = FreeCADGui.Selection.getSelection()
         if len(selection) != 1:
             FreeCAD.Console.PrintError(
@@ -492,6 +503,8 @@ class _DressupBoundary:
                 + "\n"
             )
             return
+
+        import freecad.camplus.boundary.BoundaryGui as BG
 
         # FreeCAD.ActiveDocument.openTransaction("Create Path Boundary Dressup")
         BG.Create(selection[0])

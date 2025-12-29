@@ -1,5 +1,4 @@
-"""FreeCAD initgui script of CamPlus module"""
-
+# -*- coding: utf-8 -*-
 # ***************************************************************************
 # *   Copyright (c) 2025 Russell Johnson <russ4262> russ4262@gmail.com      *
 # *                                                                         *
@@ -7,19 +6,21 @@
 # *   it under the terms of the GNU Lesser General Public License (LGPL)    *
 # *   as published by the Free Software Foundation; either version 2 of     *
 # *   the License, or (at your option) any later version.                   *
-# *   for detail see the LICENSE text file.                                 *
+# *   for detail see the LICENCE text file.                                 *
 # *                                                                         *
-# *   FreeCAD is distributed in the hope that it will be useful,            *
+# *   This program is distributed in the hope that it will be useful,       *
 # *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
 # *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
-# *   GNU Lesser General Public License for more details.                   *
+# *   GNU Library General Public License for more details.                  *
 # *                                                                         *
 # *   You should have received a copy of the GNU Library General Public     *
-# *   License along with FreeCAD; if not, write to the Free Software        *
+# *   License along with this program; if not, write to the Free Software   *
 # *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  *
 # *   USA                                                                   *
 # *                                                                         *
-# ***************************************************************************/
+# ***************************************************************************
+
+"""FreeCAD initgui script of CamPlus module"""
 
 __author__ = "Russell Johnson <russ4262>"
 __doc__ = (
@@ -42,6 +43,7 @@ class CamPlusWorkbench(Gui.Workbench):
     CommandList = [
         "_AmendCode",
         "_DressupBoundary",
+        "_WorkingShape",
     ]
 
     def Initialize(self):
@@ -64,6 +66,7 @@ class CamPlusWorkbench(Gui.Workbench):
         # Gui.addIconPath(":/icons")
         Gui.addCommand("_AmendCode", gui_commands._AmendCode())
         Gui.addCommand("_DressupBoundary", gui_commands._DressupBoundary())
+        Gui.addCommand("_WorkingShape", gui_commands._WorkingShape())
         """
         Gui.addCommand("_LinkedOperation", gui_commands._LinkedOperation())
         Gui.addCommand(
@@ -73,7 +76,6 @@ class CamPlusWorkbench(Gui.Workbench):
         Gui.addCommand(
             "_DressupOffsetInsideOut", gui_commands._DressupOffsetInsideOut()
         )
-        Gui.addCommand("_WorkingShape", gui_commands._WorkingShape())
         Gui.addCommand("_InlayOperation", gui_commands._InlayOperation())
         Gui.addCommand("_ClearingOp", gui_commands._ClearingOp())
         Gui.addCommand("_RestShape", gui_commands._RestShape())
